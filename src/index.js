@@ -19,11 +19,8 @@ ReactDOM.render(
             </p>
             <HashRouter>
                 <div>
-                    <NavLink to="/">Home</NavLink>
-                    <NavLink to="/login">Login</NavLink>
-                    <NavLink to="/register">Register</NavLink>
-
                     <Route exact  path="/" component={App}></Route>
+                    <Route path="/wallet/:id" component={App}></Route>
                     <Route path="/login" component={Login}></Route>
                     <Route path="/register" component={Register}></Route>
                 </div>
