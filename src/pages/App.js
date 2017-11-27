@@ -1,10 +1,13 @@
 import React from "react";
 import { Redirect } from 'react-router-dom'
+import Cookies from 'universal-cookie';
+const cookies = new Cookies();
+
 export default class MyWallet extends React.Component {
     constructor(props) {
         super(props);
 
-        let user_id = document.cookie.user_id;
+        let user_id = cookies.get('user_id');
         this.state = {
             user_id: user_id
         };

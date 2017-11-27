@@ -8,12 +8,8 @@ import Register from "./pages/auth/Register";
 import logo from './logo.svg';
 import './App.css';
 import registerServiceWorker from './registerServiceWorker';
-import './utils';
-import './utils.css';
-
 ReactDOM.render(
     <div>
-        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"/>
         <div className="App">
             <header className="App-header">
                 <img src={logo} className="App-logo" alt="logo" />
