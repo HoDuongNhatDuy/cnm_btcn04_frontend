@@ -20,6 +20,7 @@ export default class MyWallet extends React.Component {
         let user_id = cookies.get('user_id');
         this.state  = {
             user_id: user_id,
+            wallet_id: null,
             wallets: [],
             transactions: []
         };
@@ -79,7 +80,7 @@ export default class MyWallet extends React.Component {
                         <Wallet wallets={this.state.wallets} />
                     </div>
                     <div className="col-sm-8 text-left">
-                        <TransactionList transactions={this.state.transactions} />
+                        <TransactionList wallet_id={this.state.wallet_id} transactions={this.state.transactions} />
                     </div>
                     <div className="col-sm-2 sidenav">
                         <div className="sidebar-nav-fixed pull-right affix">

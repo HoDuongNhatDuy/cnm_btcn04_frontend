@@ -1,6 +1,7 @@
 import React from "react";
 import {HashRouter, NavLink} from 'react-router-dom'
 import './WalletList.css';
+import CreateWalletModal from './CreateWalletModal';
 
 export default class WalletList extends React.Component {
     constructor(props) {
@@ -28,8 +29,11 @@ export default class WalletList extends React.Component {
         });
         return (
             <div>
+
                 <HashRouter>
                     <div>
+                        <CreateWalletModal/>
+
                         <p>
                             <NavLink className="btn btn-info wallet-item dashboard" activeClassName='active' to="/">Dashboard</NavLink>
                         </p>

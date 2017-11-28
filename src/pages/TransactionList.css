@@ -38,3 +38,7 @@ blockquote cite {
 blockquote.amount {
     text-align: right;
 }
+
+.create-transaction {
+    text-align: center;
+}

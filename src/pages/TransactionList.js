@@ -1,14 +1,13 @@
 import React from "react";
 import './TransactionList.css';
 import Cookies from 'universal-cookie';
+import CreateWalletModal from './CreateWalletModal';
 const cookies = new Cookies();
 
 export default class TransactionList extends React.Component {
     constructor(props) {
         super(props);
     }
-
-
 
     render() {
         let user_id = cookies.get('user_id');
@@ -32,8 +31,15 @@ export default class TransactionList extends React.Component {
             );
         });
 
+        let createModal = null;
+        if (this.props.wallet_id){
+            createModal= <CreateWalletModal/>;
+        }
         return (
             <div>
+                <div className="create-transaction">
+                    {createModal}
+                </div>
                 {transactions}
             </div>
         );
