@@ -34,7 +34,7 @@ export default class WalletList extends React.Component {
                         <CreateWalletModal onSubmit={(name, description) => this.props.onCreateWallet(name, description)} />
 
                         <p>
-                            <NavLink className="btn btn-info wallet-item dashboard" activeClassName='active' to="/">Dashboard</NavLink>
+                            <NavLink exact className="btn btn-info wallet-item dashboard" activeClassName='active' to="/">Dashboard</NavLink>
                         </p>
                         {wallets}
                     </div>

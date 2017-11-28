@@ -137,7 +137,7 @@ export default class MyWallet extends React.Component {
         if (!this.validateCreateTransaction(description, amount, dest_wallet_id))
             return;
 
-        Util.showSnackBar("Creating wallet");
+        Util.showSnackBar("Creating transaction");
         let url  = Configs.API_prefix + `/transaction`;
         let data = {
             "source_wallet": this.state.current_wallet._id,
@@ -188,7 +188,7 @@ export default class MyWallet extends React.Component {
 
         return (
             <div className="container-fluid text-center">
-                <button onClick={() => this.logOut()} className="btn btn-danger pull-right">Logout</button>
+                <button onClick={() => this.logOut()} className="logout-btn btn btn-danger">Logout</button>
                 {title}
                 <div className="row content">
                     <div className="col-sm-2 sidenav">

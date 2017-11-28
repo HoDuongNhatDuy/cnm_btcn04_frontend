@@ -27,6 +27,11 @@ a.wallet-item.dashboard {
 }
 
 a.wallet-item {
+    opacity: 0.5;
     text-decoration: none;
     transition-delay: 20ms;
+}
+
+a.wallet-item.active {
+    opacity: 1;
 }

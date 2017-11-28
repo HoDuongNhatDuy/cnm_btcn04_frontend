@@ -27,7 +27,7 @@ export default class CreateTransactionModal extends React.Component {
     render() {
         return (
             <div>
-                <button className="create-wallet-btn btn-success btn" onClick={() => this.open()}>
+                <button title="Add new transaction" className="create-wallet-btn btn-success btn" onClick={() => this.open()}>
                     <span className="glyphicon glyphicon-plus"></span>
                 </button>
 

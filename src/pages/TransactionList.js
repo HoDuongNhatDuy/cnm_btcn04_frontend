@@ -31,7 +31,7 @@ export default class TransactionList extends React.Component {
 
         let createModal = null;
         if (this.props.wallet_id){
-            createModal= <CreateTransactionModal onSubmit={(description, amount, dest_wallet_id) => this.props.onCreateTransaction(description, amount, dest_wallet_id)} />;
+            createModal= <CreateTransactionModal  onSubmit={(description, amount, dest_wallet_id) => this.props.onCreateTransaction(description, amount, dest_wallet_id)} />;
         }
         return (
             <div>
