@@ -2,24 +2,27 @@ import React from "react";
 import {Modal, Button} from 'react-bootstrap'
 import './CreateModal.css';
 
-export default class CreateWalletModal extends React.Component{
+export default class CreateWalletModal extends React.Component {
     constructor(props) {
         super(props);
-        this.state = { showModal: false };
+        this.state = {showModal: false};
     }
 
     close() {
-        this.setState({ showModal: false });
+        this.setState({showModal: false});
     }
 
     open() {
-        this.setState({ showModal: true });
+        this.setState({showModal: true});
     }
 
     submit() {
-
+        let name        = this.refs.name.value;
+        let description = this.refs.description.value;
+        this.props.onSubmit(name, description);
         this.close();
     }
+
     render() {
         return (
             <div>
@@ -37,13 +40,13 @@ export default class CreateWalletModal extends React.Component{
                                 <div className="form-group row">
                                     <label className="control-label col-sm-1" htmlFor="name">Name</label>
                                     <div className="col-sm-5">
-                                        <input type="text" className="form-control" ref="name" id="name" placeholder="Wallet name" />
+                                        <input type="text" className="form-control" ref="name" id="name" placeholder="Wallet name"/>
                                     </div>
                                 </div>
                                 <div className="form-group">
                                     <label className="control-label col-sm-1" htmlFor="description">Description</label>
                                     <div className="col-sm-5">
-                                        <input type="text" className="form-control" ref="description" id="description" placeholder="Wallet description" />
+                                        <input type="text" className="form-control" ref="description" id="description" placeholder="Wallet description"/>
                                     </div>
                                 </div>
 

@@ -1,7 +1,7 @@
 import React from "react";
 import './TransactionList.css';
 import Cookies from 'universal-cookie';
-import CreateWalletModal from './CreateWalletModal';
+import CreateTransactionModal from "./CreateTransactionModal";
 const cookies = new Cookies();
 
 export default class TransactionList extends React.Component {
@@ -10,10 +10,8 @@ export default class TransactionList extends React.Component {
     }
 
     render() {
-        let user_id = cookies.get('user_id');
-
         let transactions = this.props.transactions.map((transaction, index) => {
-            let is_sent = transaction.source_user === user_id;
+            let is_sent = transaction.source_wallet._id === this.props.wallet_id;
             return (
                 <blockquote key={"transaction-" + index} className={is_sent ? 'sent' : 'received'}>
                     <div className="row">
@@ -33,7 +31,7 @@ export default class TransactionList extends React.Component {
 
         let createModal = null;
         if (this.props.wallet_id){
-            createModal= <CreateWalletModal/>;
+            createModal= <CreateTransactionModal onSubmit={(description, amount, dest_wallet_id) => this.props.onCreateTransaction(description, amount, dest_wallet_id)} />;
         }
         return (
             <div>

@@ -25,7 +25,6 @@ ReactDOM.render(
                 </div>
             </HashRouter>
         </div>
-        <div id="snackbar">Some text some message..</div>
     </div>,
     document.getElementById('root'));
 registerServiceWorker();

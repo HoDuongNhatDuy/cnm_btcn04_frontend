@@ -6,6 +6,6 @@ exports.showSnackBar = function(text, type = "normal") {
             x.className = x.className.replace("show", "");
             x.innerHTML = "";
         }
-        , 3000);
+        , 5000);
 };
 

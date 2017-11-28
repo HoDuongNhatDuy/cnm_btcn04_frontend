@@ -8,12 +8,11 @@ export default class WalletList extends React.Component {
         super(props);
     }
 
-
-
     render() {
+        let this_component = this;
         let wallets = this.props.wallets.map((wallet, index) => {
             return (
-                <p key={wallet.name + "-" + index}>
+                <div onClick={() => this_component.props.onChangeWallet()} key={"wallet-" + index}>
                     <NavLink className="btn btn-success wallet-item" activeClassName='active' to={`/wallet/${wallet._id}`}>
                         <div className="row">
                             <div className="col-sm-6">
@@ -24,7 +23,7 @@ export default class WalletList extends React.Component {
                             </div>
                         </div>
                     </NavLink>
-                </p>
+                </div>
             );
         });
         return (
@@ -32,7 +31,7 @@ export default class WalletList extends React.Component {
 
                 <HashRouter>
                     <div>
-                        <CreateWalletModal/>
+                        <CreateWalletModal onSubmit={(name, description) => this.props.onCreateWallet(name, description)} />
 
                         <p>
                             <NavLink className="btn btn-info wallet-item dashboard" activeClassName='active' to="/">Dashboard</NavLink>
