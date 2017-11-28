@@ -6,7 +6,6 @@ import App from "./pages/App";
 import Login from "./pages/auth/Login";
 import Register from "./pages/auth/Register";
 import logo from './logo.svg';
-import './App.css';
 import registerServiceWorker from './registerServiceWorker';
 ReactDOM.render(
     <div>
@@ -19,7 +18,7 @@ ReactDOM.render(
             </p>
             <HashRouter>
                 <div>
-                    <Route exact  path="/" component={App}></Route>
+                    <Route exact path="/" component={App}></Route>
                     <Route path="/wallet/:id" component={App}></Route>
                     <Route path="/login" component={Login}></Route>
                     <Route path="/register" component={Register}></Route>

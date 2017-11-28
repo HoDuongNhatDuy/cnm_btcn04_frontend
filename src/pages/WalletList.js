@@ -1,5 +1,6 @@
 import React from "react";
 import {HashRouter, NavLink} from 'react-router-dom'
+import './WalletList.css';
 
 export default class WalletList extends React.Component {
     constructor(props) {
@@ -11,8 +12,17 @@ export default class WalletList extends React.Component {
     render() {
         let wallets = this.props.wallets.map((wallet, index) => {
             return (
-                <p>
-                    <NavLink to={`/wallet/${wallet._id}`}>{wallet.name}</NavLink>
+                <p key={wallet.name + "-" + index}>
+                    <NavLink className="btn btn-success wallet-item" activeClassName='active' to={`/wallet/${wallet._id}`}>
+                        <div className="row">
+                            <div className="col-sm-6">
+                                {wallet.name}
+                            </div>
+                            <div className="col-sm-6">
+                                {wallet.amount}
+                            </div>
+                        </div>
+                    </NavLink>
                 </p>
             );
         });
@@ -21,7 +31,7 @@ export default class WalletList extends React.Component {
                 <HashRouter>
                     <div>
                         <p>
-                            <NavLink to="/">Dashboard</NavLink>
+                            <NavLink className="btn btn-info wallet-item dashboard" activeClassName='active' to="/">Dashboard</NavLink>
                         </p>
                         {wallets}
                     </div>

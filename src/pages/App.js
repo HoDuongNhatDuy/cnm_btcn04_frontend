@@ -1,10 +1,15 @@
 import React from "react";
-import {Redirect, NavLink} from 'react-router-dom'
+// import {Redirect, NavLink} from 'react-router-dom'
+import { Redirect } from "react-router-dom";
+
 import Cookies from 'universal-cookie';
 import Wallet from './WalletList';
+import TransactionList from './TransactionList';
 import Configs from '../Configs';
 import $ from 'jquery'
 import Util from '../utils';
+import './App.css';
+import Transaction from "./TransactionList";
 
 const cookies = new Cookies();
 
@@ -15,10 +20,31 @@ export default class MyWallet extends React.Component {
         let user_id = cookies.get('user_id');
         this.state  = {
             user_id: user_id,
-            wallets: []
+            wallets: [],
+            transactions: []
         };
 
         this.updateTotalInfo();
+        this.updateWalletsDetail();
+    }
+
+    updateWalletsDetail(){
+        let walletId = this.props.match.params.id;
+        if (walletId){
+            let thisComponent = this;
+            let url  = Configs.API_prefix + `/wallet/${walletId}`;
+            $.get(url, function (response) {
+                if (!response.status){
+                    Util.showSnackBar(response.message);
+                    return;
+                }
+
+                thisComponent.setState({
+                    wallet_id: walletId,
+                    transactions: response.data.transactions
+                });
+            })
+        }
     }
 
     updateTotalInfo(){
@@ -31,7 +57,8 @@ export default class MyWallet extends React.Component {
             }
 
             thisComponent.setState({
-                wallets: response.data.wallets
+                wallets: response.data.wallets,
+                transactions: response.data.transactions
             });
         })
     }
@@ -41,6 +68,8 @@ export default class MyWallet extends React.Component {
             return (
                 <Redirect to="/login" push/>
             );
+
+
         return (
             <div className="container-fluid text-center">
                 <h1>My Wallets</h1>
@@ -50,24 +79,13 @@ export default class MyWallet extends React.Component {
                         <Wallet wallets={this.state.wallets} />
                     </div>
                     <div className="col-sm-8 text-left">
-                        <h1>Welcome</h1>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut
-                            labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco
-                            laboris nisi ut aliquip ex ea commodo consequat. Excepteur sint occaecat cupidatat non
-                            proident, sunt in culpa qui officia deserunt mollit anim id est laborum consectetur
-                            adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim
-                            ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
-                            consequat.</p>
-                        <hr/>
-                        <h3>Test</h3>
-                        <p>Lorem ipsum...</p>
+                        <TransactionList transactions={this.state.transactions} />
                     </div>
                     <div className="col-sm-2 sidenav">
-                        <div className="well">
-                            <p>ADS</p>
-                        </div>
-                        <div className="well">
-                            <p>ADS</p>
+                        <div className="sidebar-nav-fixed pull-right affix">
+                            <div className="well ads">
+                                <p>ADS</p>
+                            </div>
                         </div>
                     </div>
                 </div>
